@@ -1,0 +1,5 @@
+Requirements:
+OpenCv library in python - Huge open source library for computer vision, ML, and image processing and can also be used in realtime operations.
+
+Dlib library - Dlib is a C++ library that can be used in Python through its bindings(Bindings are a way of connecting two different programming languages ). Dlib provides various machine learning algorithms and tools for creating complex software applications.
+Main feature of this library is its face detection and recognition capabilities.
