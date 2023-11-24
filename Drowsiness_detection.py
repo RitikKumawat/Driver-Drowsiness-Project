@@ -10,7 +10,8 @@ cap  = cv2.VideoCapture(0)
 #initializing the face detector and landmark detector
 #It is more accurate than opencv therefore we are using dlib library
 detector = dlib.get_frontal_face_detector()
-#It will detect 68 facial landmarks 
+
+#It will predict 68 facial landmarks 
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
 
@@ -28,9 +29,9 @@ def compute(ptA,ptB):
 
 
 def blinked(a,b,c,d,e,f):
-    up = compute(b,d) + compute(c,e)
-    down = compute(a,f)
-    ratio = up/(2.0*down)
+    vertical = compute(b,d) + compute(c,e)
+    horizontal = compute(a,f)
+    ratio = vertical/(2.0*horizontal)
 
     if(ratio>0.25):
         return 2
@@ -46,7 +47,7 @@ while True:
     faces = detector(gray)
     face_frame = frame.copy()
     #detected faces in faces array
-    for face in faces:
+    for face in faces: #faces generates multiple rectangles for faces
         #the rectangle which is displayed on screen
         x1 = face.left()
         y1 = face.top()
@@ -56,8 +57,9 @@ while True:
         # face_frame = frame.copy()
         cv2.rectangle(face_frame,(x1,y1),(x2,y2),(0,255,0),2)
 
-        #passing the frame(gray) and area of detection(face)
-        landmarks = predictor(gray,face)
+        #passing the frame(gray) and area of detection(face) , face is the region of interest the green rectangle 
+        landmarks = predictor(gray,face) 
+
         #converting the detected landmarks into np array
         landmarks = face_utils.shape_to_np(landmarks)
 

@@ -3,3 +3,26 @@ OpenCv library in python - Huge open source library for computer vision, ML, and
 
 Dlib library - Dlib is a C++ library that can be used in Python through its bindings(Bindings are a way of connecting two different programming languages ). Dlib provides various machine learning algorithms and tools for creating complex software applications.
 Main feature of this library is its face detection and recognition capabilities.
+
+Imutils library - It provides a series of convenience functions to make basic image processing functions easier with openCV. These functions include translation, rotation and detecting edges.
+
+shape_predictor_68_landmarks.dat  - It is a trained model file for dlib's shape predictor.It is used to detect 68 facial landmarks on a given face image, such as the corners of the eyes, the tip of the nose, the edges of the mouth, etc.
+
+We are using dlib because it has more accuracy than openCV's haar Cascade detector.
+A haar cascade detector is a machine learning based method for object detection in images and videos. It uses cascade of simple features such as edges and lines to identify regions of interest.
+
+
+compute function will compute the distance between two points using euclidian distance
+
+how to know if eyes are blinked?
+ans - we are defining a function called blinked which takes 6 parameters (a,b,c,d,e,f)
+first will compute the vertical and horizontal distance between the eyes
+and then we are calculating a ratio which is equal to (vertical distance)/(2*horizontal distance)
+and if this ratio is greater than 0.25 then eye is open 
+if ratio is between 0.21 and 0.25 then eye is drowsy 
+if ratio is less than 0.21 then it means eye is closed
+
+
+
+
+
